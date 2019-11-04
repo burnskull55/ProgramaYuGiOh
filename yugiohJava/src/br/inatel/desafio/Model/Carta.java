@@ -5,19 +5,47 @@
  */
 package br.inatel.desafio.Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author burns
  */
-public abstract class Carta implements Comparable<Carta>{
+public abstract class Carta implements Serializable,Comparable<Carta>{
     protected String nome;
     protected String atributo;
     protected String id;
+    protected boolean deleted;
     
     public void infoCarta(){
         //TODO
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getAtributo() {
+        return atributo;
+    }
+
+    public void setAtributo(String atributo) {
+        this.atributo = atributo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
     @Override
     public String toString() {
         return "Carta{" + "nome=" + nome + ", atributo=" + atributo + ", id=" + id + '}';

@@ -5,6 +5,8 @@
  */
 package br.inatel.desafio.Controller;
 import br.inatel.desafio.Model.Carta;
+import br.inatel.desafio.Model.Magica;
+import br.inatel.desafio.Model.Monstro;
 import java.util.ArrayList;
 
 /**
@@ -14,24 +16,48 @@ import java.util.ArrayList;
 public class GerenciadorBaralho {
     private ArrayList<Carta> deck = new ArrayList();
     
-   public void addCarta(Carta c){
-        //TODO
+   public void addCarta(Arquivo a,Carta c){
+        deck.add(c);
+        a.salvarArquivo(deck);
    }
-   public void removeCarta(Carta c){
-       //TODO
+   public void removeCarta(Arquivo a,Carta c){
+       ArrayList<Carta> aux = new ArrayList();
+       aux = a.ler();
+       aux.remove(c);
+       a.salvarArquivo(aux);
    }
-   public void listarDeckCompleto(){
-       //TODO
+   public void listarDeckCompleto(Arquivo a){
+       ArrayList<Carta> aux = new ArrayList();
+       aux = a.ler();
+       for (Carta carta : aux) {
+           if(carta instanceof Monstro){
+               carta = (Monstro) carta;
+               carta.infoCarta();
+           }
+           else if(carta instanceof Magica){
+               carta = (Magica) carta;
+               carta.infoCarta();
+           }         
+       }
    }
-   public void listarDeckPosicoes(){
-       //TODO
+   public void listarDeckPosicoes(Arquivo a){
+       ArrayList<Carta> aux = new ArrayList();
+       aux = a.ler();
+       for (int i = 0; i < aux.size(); i++) {
+           System.out.println(i);
+           System.out.println(aux.get(i).getNome());
+       }
    }
-   public void editarCarta(int indice,Carta c){
-       //TODO
+   public void editarCarta(Arquivo a,Carta c){
+      ArrayList<Carta> aux = new ArrayList();
+       aux = a.ler();
+       
    }
-   public int numCartas(){
-       //TODO
-       return 0;
+   public int numCartas(Arquivo a){
+       ArrayList<Carta> aux = new ArrayList();
+       aux = a.ler();
+       
+       return aux.size();
    }
    public void ordenarCartas(){
        //TODO

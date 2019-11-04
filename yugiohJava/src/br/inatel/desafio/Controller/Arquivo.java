@@ -16,6 +16,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,20 +27,23 @@ public class Arquivo {
     public Arquivo() {
         try {
             OutputStream os = new FileOutputStream("baralho.txt", true);
+            os.close();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString(),"Erro ao criar o arquivo",JOptionPane.ERROR_MESSAGE);
         }
     }
     
     public void salvarArquivo(ArrayList<Carta> cartas){
+        FileOutputStream fout;
+        ObjectOutputStream out;
         try {
-            //salvando em um arquivo
-            OutputStream os = new FileOutputStream("baralho.txt", false);
-            ObjectOutputStream osw = new ObjectOutputStream(os);
-            osw.writeObject(cartas);
+            fout = new FileOutputStream("baralho.txt", false);
+            out = new ObjectOutputStream(fout);
 
-            //fechando o arquivo
-            osw.close();
-            os.close();
+            out.writeObject(cartas);
+
+            out.close();
+            fout.close();
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Arquivo.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,13 +58,13 @@ public class Arquivo {
 
         FileInputStream fin;
         ObjectInputStream in;
-        ArrayList<Carta> cartas = new ArrayList<>();
-
+        ArrayList<Carta> c = new ArrayList<>();
+        
         try {
             fin = new FileInputStream("baralho.txt");
             in = new ObjectInputStream(fin);
 
-            cartas = (ArrayList<Carta>) in.readObject();
+            c = (ArrayList<Carta>) in.readObject();
 
             in.close();
             fin.close();
@@ -68,6 +72,7 @@ public class Arquivo {
             System.out.println(ex);
         }
         
-        return cartas;
+        return c;
     }
+  
 }

@@ -9,7 +9,7 @@ package br.inatel.desafio.Model;
  *
  * @author burns
  */
-public final class Monstro extends Carta{
+public final class Monstro extends Carta implements Comparable<Carta>{
     private int atk;
     private int def;
     private int lvl;

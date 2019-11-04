@@ -9,7 +9,7 @@ package br.inatel.desafio.Model;
  *
  * @author burns
  */
-public final class Magica extends Carta{
+public final class Magica extends Carta implements Comparable<Carta>{
     private String efeito;
     private String tipo;
     
