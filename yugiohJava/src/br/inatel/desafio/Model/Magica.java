@@ -13,13 +13,17 @@ public final class Magica extends Carta implements Comparable<Carta>{
     private String efeito;
     private String tipo;
     
+    
     @Override
     public void infoCarta(){
-        //TODO
+        System.out.println("nome:" + this.nome);
+        System.out.println("tipo: " + this.tipo);
+        System.out.println("efeito: " + this.efeito);
+        System.out.println("______________________________");
     }
     @Override
     public int compareTo(Carta o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getNome().compareTo(o.nome);
     }
     
     public String getEfeito() {
@@ -38,26 +42,32 @@ public final class Magica extends Carta implements Comparable<Carta>{
         this.tipo = tipo;
     }
 
+    @Override
     public String getNome() {
         return nome;
     }
 
+    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    @Override
     public String getAtributo() {
         return atributo;
     }
 
+    @Override
     public void setAtributo(String atributo) {
         this.atributo = atributo;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }

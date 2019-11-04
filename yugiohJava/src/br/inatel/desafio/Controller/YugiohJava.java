@@ -23,9 +23,13 @@ public class YugiohJava {
         GerenciadorBaralho deck = new GerenciadorBaralho();
         //criando cartas
         Magica c1 = new Magica();
+        c1.setIsMonster(false);
         Magica c2 = new Magica();
+        c2.setIsMonster(false);
         Monstro c3 = new Monstro();
+        c3.setIsMonster(true);
         Monstro c4 = new Monstro();
+        c4.setIsMonster(true);
         //inicializando as cartas
         c1.setNome("chamado dos assombrados");
         c1.setEfeito("Ative este card ao escolher 1 monstro no seu Cemitério;"
@@ -49,13 +53,35 @@ public class YugiohJava {
         c3.setTipo("dragao/normal");
         c3.setId("3");
         
-        c3.setNome("obelisco atormentador");
-        c3.setAtk(4000);
-        c3.setDef(4000);
-        c3.setLvl(10);
-        c3.setAtributo("divino");
-        c3.setTipo("besta divina/efeito");
-        c3.setId("4");
+        c4.setNome("obelisco atormentador");
+        c4.setAtk(4000);
+        c4.setDef(4000);
+        c4.setLvl(10);
+        c4.setAtributo("divino");
+        c4.setTipo("besta divina/efeito");
+        c4.setId("4");
+        
+        //chamando as funçoes do gerenciador de baralho
+        //adicionando cartas
+        deck.addCarta(arquivo, c1);
+        deck.addCarta(arquivo, c2);
+        deck.addCarta(arquivo, c3);
+        deck.addCarta(arquivo, c4);
+        //listando deck completo 
+        deck.listarDeckCompleto(arquivo);
+        //listando o deck posiçoes
+        deck.listarDeckPosicoes(arquivo);
+        //mostrando quantas cartas estao no arquivo
+        System.out.println("numero de cartas:  "+ deck.numCartas(arquivo));
+        //removendo uma carta 
+        deck.removeCarta(arquivo,"obelisco atormentador");
+        //mostrando que uma carta foi removida
+        deck.listarDeckPosicoes(arquivo);
+        //as janelas joption pane que sao abertas sao pra editar a carta "chamado dos assombrados"
+        deck.editarCarta(arquivo, "chamado dos assombrados");
+        //mostrando que a carta foi editada de forma correta 
+        deck.listarDeckCompleto(arquivo);
+        
         
         
     }
